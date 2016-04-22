@@ -21,7 +21,8 @@
     "jasmine-node": "^1.14.5",
     "jquery": "^2.2.3",
     "kerberos": "0.0.19",
-    "mongoose": "^4.4.13"
+    "mongoose": "^4.4.13",
+    "mongoose-relationship": "^0.1.5"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",

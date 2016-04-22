@@ -1,9 +1,12 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import chefFactory from 'public/factories/chef-factory';
-import chefController from 'public/chef/chef';
+import placeFactory from 'public/factories/place-factory';
+import placeController from 'public/chef/place/place';
+import menuFactory from 'public/factories/menu-factory';
+import menuController from 'public/chef/menu/menu';
 
-const app = angular.module('app', [uiRouter, chefFactory.name]);
+
+const app = angular.module('app', [uiRouter, placeFactory.name, menuFactory.name]);
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 	$urlRouterProvider.otherwise('/');
@@ -11,8 +14,13 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 	$stateProvider
 		.state('chef', {
 			url: '/',
-			template: require('public/chef/chef.html'),
-			controller: chefController
+			template: require('public/chef/place/place.html'),
+			controller: placeController
+		})
+		.state('menu', {
+			url: '/chef/:chefId',
+			template: require('public/chef/menu/menu.html'),
+			controller: menuController
 		})
 		.state('about', {
 			url: '/about',

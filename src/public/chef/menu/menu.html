@@ -1,0 +1,64 @@
+<div class="container">
+    <a ui-sref="about" class="nav-link">About Zee</a>
+    <h2>Chef Zee</h2>
+
+    <form ng-submit="createMenu()">
+        <input class="form-control menus__create-input" placeholder="Qual o nome do prato?" ng-model="menuNameInput" />
+        <input class="form-control menus__create-input" placeholder="Alguma foto para o prato (url)?" ng-model="menuImageInput" />
+        <input class="form-control menus__create-input" placeholder="Qual o preço?" ng-model="menuPriceInput" />
+        <button class="btn btn-success menus__create-button">Criar prato</button>
+    </form>
+
+
+	<div ng-repeat="menu in menus" ng-if="$index % 3 == 0" class="row">
+	    <div class="col-xs-4">
+            <div class="card hoverable">
+                <div class="card-image">
+                    <div class="view overlay hm-white-slight z-depth-1">
+                        <img src="{{menus[$index].image}}" class="img-responsive" alt="">
+                        <a href="#">
+                            <div class="mask waves-effect"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h5>{{menus[$index].name}}</h5>
+                    <h5>{{menus[$index].price}}</h5>
+                </div>
+            </div>
+        </div>
+	    <div class="col-xs-4" ng-if="menus.length > ($index + 1)">
+            <div class="card hoverable">
+                <div class="card-image">
+                    <div class="view overlay hm-white-slight z-depth-1">
+                        <img src="{{menus[$index + 1].image}}" class="img-responsive" alt="">
+                        <a href="#">
+                            <div class="mask waves-effect"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h5>{{menus[$index + 1].name}}</h5>
+                    <h5>{{menus[$index + 1].price}}</h5>
+                </div>
+            </div>        
+        </div>
+	    <div class="col-xs-4" ng-if="menus.length > ($index + 2)">
+            <div class="card hoverable">
+                <div class="card-image">
+                    <div class="view overlay hm-white-slight z-depth-1">
+                        <img src="{{menus[$index + 2].image}}" class="img-responsive" alt="">
+                        <a href="#">
+                            <div class="mask waves-effect"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h5>{{menus[$index + 2].name}}</h5>
+                    <h5>{{menus[$index + 2].price}}</h5>
+                </div>
+            </div>        
+        </div>
+	</div>
+
+</div>
