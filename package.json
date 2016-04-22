@@ -6,7 +6,8 @@
   "scripts": {
     "start": "NODE_PATH=$NODE_PATH:./src node server",
     "dev": "npm start & webpack-dev-server --progress --colors",
-    "test": "istanbul cover --include-all-sources jasmine-node test"
+    "test": "istanbul cover --include-all-sources jasmine-node test",
+    "build": "webpack --progress --colors --config webpack.prod.config.js"
   },
   "keywords": [],
   "author": "",
