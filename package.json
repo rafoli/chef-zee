@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_PATH=$NODE_PATH:./src node server",
     "dev": "npm start & webpack-dev-server --progress --colors",
-    "test": "gulp test"
+    "test": "istanbul cover --include-all-sources jasmine-node test"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,8 @@
     "body-parser": "^1.15.0",
     "bootstrap-sass": "^3.3.6",
     "express": "^4.13.4",
+    "istanbul": "^0.4.3",
+    "jasmine-node": "^1.14.5",
     "jquery": "^2.2.3",
     "kerberos": "0.0.19",
     "mongoose": "^4.4.13"
@@ -31,6 +33,7 @@
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "imports-loader": "^0.6.5",
+    "istanbul": "^0.4.3",
     "node-sass": "^3.5.3",
     "raw-loader": "^0.5.1",
     "require-dir": "^0.3.0",
