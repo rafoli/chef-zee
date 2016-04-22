@@ -1,11 +1,12 @@
 {
-  "name": "localfood",
+  "name": "chef-zee",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "NODE_PATH=$NODE_PATH:./src node server",
-    "dev": "npm start & webpack-dev-server --progress --colors"
+    "dev": "npm start & webpack-dev-server --progress --colors",
+    "test": "gulp test"
   },
   "keywords": [],
   "author": "",
@@ -27,9 +28,12 @@
     "bootstrap-loader": "^1.0.10",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
     "imports-loader": "^0.6.5",
     "node-sass": "^3.5.3",
     "raw-loader": "^0.5.1",
+    "require-dir": "^0.3.0",
     "resolve-url-loader": "^1.4.3",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
