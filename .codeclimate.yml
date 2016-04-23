@@ -21,4 +21,10 @@ ratings:
   - "**.php"
   - "**.py"
   - "**.rb"
-exclude_paths: []
+exclude_paths:
+- "public/**.js"
+- "public/**.woff2"
+- "public/**.svg"
+- "public/**.ttf"
+- "public/**.eot"
+- "public/**.woff"
