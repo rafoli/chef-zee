@@ -1,75 +1,40 @@
-<div class="container">
-    <a ui-sref="about" class="nav-link">About Zee</a>
-    <h2>Chef Zee</h2>
+<!-- Portfolio Grid Section -->
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Restaurantes</h2>
+                </div>
+            </div>
+            <div ui-view></div>
+            <div class="row">
+                <div ng-repeat="place in places" class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{place.logo}}" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{place.name}}</h4>
+                        <p class="text-muted">{{place.name}}</p>
+                        <!--Buttons-->
+                        <div class="card-btn text-center">
+                            <a ui-sref="menu({ chefId:'{{places[$index]._id}}' })" class="btn btn-success btn-md waves-effect waves-light">Cardápio</a>
+                        </div>
+                        <!--/.Buttons-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <form ng-submit="createPlace()">
         <input class="form-control places__create-input" placeholder="What is your place name?" ng-model="placeNameInput" />
         <input class="form-control places__create-input" placeholder="What is your logo (url)?" ng-model="placeLogoInput" />
         <button class="btn btn-success places__create-button">Create Place</button>
     </form>
-
-
-	<div ng-repeat="place in places" ng-if="$index % 3 == 0" class="row">
-	    <div class="col-xs-4">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <div class="view overlay hm-white-slight z-depth-1">
-                        <img src="{{places[$index].logo}}" class="img-responsive" alt="">
-                        <a href="#">
-                            <div class="mask waves-effect"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h5>{{places[$index].name}}</h5>
-                </div>
-                <!--Buttons-->
-                <div class="card-btn text-center">
-                    <a ui-sref="menu({ chefId:'{{places[$index]._id}}' })" class="btn btn-primary btn-md waves-effect waves-light">Cardápio</a>
-                </div>
-                <!--/.Buttons-->
-            </div>
-        </div>
-	    <div class="col-xs-4" ng-if="places.length > ($index + 1)">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <div class="view overlay hm-white-slight z-depth-1">
-                        <img src="{{places[$index + 1].logo}}" class="img-responsive" alt="">
-                        <a href="#">
-                            <div class="mask waves-effect"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h5>{{places[$index + 1].name}}</h5>
-                </div>
-                <!--Buttons-->
-                <div class="card-btn text-center">
-                    <a ui-sref="menu({ chefId:'{{places[$index + 1]._id}}' })" class="btn btn-primary btn-md waves-effect waves-light">Cardápio</a>
-                </div>
-                <!--/.Buttons-->
-            </div>        
-        </div>
-	    <div class="col-xs-4" ng-if="places.length > ($index + 2)">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <div class="view overlay hm-white-slight z-depth-1">
-                        <img src="{{places[$index + 2].logo}}" class="img-responsive" alt="">
-                        <a href="#">
-                            <div class="mask waves-effect"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h5>{{places[$index + 2].name}}</h5>
-                </div>
-                <!--Buttons-->
-                <div class="card-btn text-center">
-                    <a ui-sref="menu({ chefId:'{{places[$index + 2]._id}}' })" class="btn btn-primary btn-md waves-effect waves-light">Cardápio</a>
-                </div>
-                <!--/.Buttons-->
-            </div>        
-        </div>
-	</div>
 
 </div>
