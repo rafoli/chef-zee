@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     relationship = require("mongoose-relationship");
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://db_1:27017/zee');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/zee');
 
 // Place
 var ChefPlaceSchema = new Schema({
