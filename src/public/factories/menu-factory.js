@@ -22,7 +22,7 @@ const menuFactory = angular.module('app.menuFactory', [])
             price: $scope.menuPriceInput,
             chef: chefId 
         }).success(response => {
-            getMenus($scope);
+            getMenus($scope, chefId);
             $scope.menuNameInput = '';
             $scope.menuImageInput = '';
             $scope.menuPriceInput = '';
