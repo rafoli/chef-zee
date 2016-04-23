@@ -60764,7 +60764,7 @@
 	            price: $scope.menuPriceInput,
 	            chef: chefId
 	        }).success(function (response) {
-	            getMenus($scope);
+	            getMenus($scope, chefId);
 	            $scope.menuNameInput = '';
 	            $scope.menuImageInput = '';
 	            $scope.menuPriceInput = '';
