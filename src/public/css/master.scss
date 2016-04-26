@@ -1,4 +1,6 @@
 @import 'chef.scss';
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
+
 .nav-link {
 	float: right;
 	margin-top: 30px;
@@ -309,7 +311,7 @@ section h3.section-subheading {
 }
 #portfolio .portfolio-item {
     margin: 0 0 15px;
-    right: 0
+    right: 0;
 }
 #portfolio .portfolio-item .portfolio-link {
     display: block;

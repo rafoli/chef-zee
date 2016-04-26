@@ -6,15 +6,9 @@
                     <h2 class="section-heading">Restaurantes</h2>
                 </div>
             </div>
-            <div ui-view></div>
             <div class="row">
                 <div ng-repeat="place in places" class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
                         <img src="{{place.logo}}" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
@@ -27,14 +21,15 @@
                         <!--/.Buttons-->
                     </div>
                 </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <form ng-submit="createPlace()">
+                        <input class="form-control places__create-input" placeholder="Qual o nome do lugar?" ng-model="placeNameInput" />
+                        <input class="form-control places__create-input" placeholder="Qual a sua logo (url)?" ng-model="placeLogoInput" />
+                        <button class="btn btn-success places__create-button">Create Place</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
-
-    <form ng-submit="createPlace()">
-        <input class="form-control places__create-input" placeholder="What is your place name?" ng-model="placeNameInput" />
-        <input class="form-control places__create-input" placeholder="What is your logo (url)?" ng-model="placeLogoInput" />
-        <button class="btn btn-success places__create-button">Create Place</button>
-    </form>
 
 </div>
