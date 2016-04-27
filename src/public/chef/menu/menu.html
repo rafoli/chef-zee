@@ -8,9 +8,11 @@
             </div>
             <div class="row">
                 <div ng-repeat="menu in menus" class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <img src="{{menu.image}}" class="img-responsive" alt="">
-                    </a>
+                    <div class="portfolio-logo">
+                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                            <img src="{{menu.image}}" class="img-responsive" alt="">
+                        </a>
+                    </div>
                     <div class="portfolio-caption">
                         <h4>{{menu.name}}</h4>
                         <p class="text-muted">{{menu.price}}</p>

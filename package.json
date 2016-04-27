@@ -1,6 +1,6 @@
 {
-  "name": "chef-zee",
-  "version": "1.0.0",
+  "name": "istto",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,13 +17,16 @@
     "angular-ui-router": "^0.2.18",
     "body-parser": "^1.15.0",
     "bootstrap-sass": "^3.3.6",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
     "istanbul": "^0.4.3",
     "jasmine-node": "^1.14.5",
     "jquery": "^2.2.3",
     "kerberos": "0.0.19",
     "mongoose": "^4.4.13",
-    "mongoose-relationship": "^0.1.5"
+    "mongoose-relationship": "^0.1.5",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
