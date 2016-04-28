@@ -6,22 +6,15 @@ var router = express.Router();
 
 router.get('/:id', function(req, res) {
 	ChefPlace.findOne( { '_id': req.params.id }, function(err, results) {
+		console.log(req.headers.authorization);
 		if (err) { console.log(err) };
 
 		var chef = results;
 
-		console.log(chef);
-		console.log('*******************');
-
 		ChefMenu.find( { 'chef': req.params.id }, function(err, results2) {
 			if (err) { console.log(err) };
 
-			console.log(results2);
-			console.log('*******************');
-
 			chef.menus = results2;
-
-			console.log(chef);
 
 			res.send( { place: chef });
 		});

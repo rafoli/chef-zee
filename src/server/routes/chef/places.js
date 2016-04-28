@@ -5,6 +5,7 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
 	ChefPlace.find(function(err, results) {
+		console.log(req.headers.authorization);
 		if (err) { console.log(err) };
 
 		res.send( { places: results });
