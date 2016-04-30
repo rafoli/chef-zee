@@ -14,6 +14,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
 	var place = new ChefPlace(req.body);
+	console.log(place);
 	place.save(function(err) {
 		if (err) { console.log(err); }
 

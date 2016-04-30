@@ -32,6 +32,7 @@ passport.deserializeUser(function(user, done) {
 
 passport.use(new BasicStrategy(
   function(userid, password, done) {
+    console.log(userid + ' : ' + password)
   	if ('1234' != password) { return done(null, false); }
   	var token = uid(16);
     return done(null, { username: userid, email: userid, token: token}); 
