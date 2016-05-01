@@ -9,7 +9,7 @@ isttoApp.Services
       createPlace: function (name, description, moreDescription, logo) {
         return $http({
           method: "POST",
-          url: TT_API_PATH + "chef/places",
+          url: "/chef/places",
           data: { 'name' : name, 'description' : description, 'moreDescription' : moreDescription, 'logo' : logo },
           headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
         });
@@ -17,7 +17,7 @@ isttoApp.Services
       updatePlace: function (place) {
         return $http({
           method: "PUT",
-          url: TT_API_PATH + "chef/places/" + place._id,
+          url: "/chef/places/" + place._id,
           data: place,
           headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
         });
@@ -25,7 +25,7 @@ isttoApp.Services
       places: function () {
         return $http({
           method: "GET",
-          url: TT_API_PATH + "chef/places",
+          url: "/chef/places",
           headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
         });
       },
@@ -33,7 +33,7 @@ isttoApp.Services
       place: function (placeId) {
         return $http({
           method: "GET",
-          url: TT_API_PATH + "chef/menus/" + placeId,
+          url: "/chef/menus/" + placeId,
           headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
         });
       }, 
@@ -41,7 +41,7 @@ isttoApp.Services
       createMenu: function (name, description, price, image, placeId) {
         return $http({
           method: "POST",
-          url: TT_API_PATH + "chef/menus",
+          url: "/chef/menus",
           data: { 'name' : name, 'description' : description, 'price' : price, 'image' : image, place : placeId },
           headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
         });
@@ -49,7 +49,7 @@ isttoApp.Services
       updateMenu: function (menu) {
         return $http({
           method: "PUT",
-          url: TT_API_PATH + "chef/menus/" + menu._id,
+          url: "/chef/menus/" + menu._id,
           data: menu,
           headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
         });

@@ -8,7 +8,7 @@ isttoApp.Services
       getToken: function(user) {
         return $http({
           method: "GET",
-          url: TT_API_PATH + "user/me",
+          url: "/user/me",
           headers: { "Authorization": "Basic " + btoa(user.username + ":" + user.password) }
         });
       },
