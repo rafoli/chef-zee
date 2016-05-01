@@ -27,6 +27,7 @@
     "lodash": "^4.11.1",
     "mongoose": "^4.4.13",
     "mongoose-relationship": "^0.1.5",
+    "ng-lodash": "^0.2.3",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
