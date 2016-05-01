@@ -1,0 +1,18 @@
+<div class="main-container-custom-login">
+  <div class="container-custom-login">
+    <div class="info">
+      <h2>Vita Gourmet</h2>
+    </div>
+  </div>
+  <div class="form-custom-login">
+    <div class="thumbnail-custom-login" /></div>
+    <div class="mdl-color--red-600 mdl-color-text--white pam" ng-show="showError">
+      Usuário ou senha inválidos. Tente novamente.
+    </div>
+    <form class="custom-login-form" ng-submit="login()">
+      <input type="email" placeholder="Email" ng-model="params.username"/>
+      <input type="password" placeholder="password" ng-model="params.password"/>
+      <button class="btn btn-success btn-md waves-effect waves-light">Entrar</button>
+    </form>
+  </div>
+</div>

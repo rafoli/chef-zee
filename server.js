@@ -5,12 +5,13 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var routes = require('server/routes');
 var uid = require('rand-token').uid;
+var User = require('server/db/db').User;
 
 var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
 
 
-var PORT = process.env.PORT || 5555;
+var PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
@@ -33,9 +34,18 @@ passport.deserializeUser(function(user, done) {
 passport.use(new BasicStrategy(
   function(userid, password, done) {
     console.log(userid + ' : ' + password)
-  	if ('1234' != password) { return done(null, false); }
-  	var token = uid(16);
-    return done(null, { username: userid, email: userid, token: token}); 
+    User.findOne( { 'email': userid }, function(err, user) {
+
+      if (err || !(user)) { return done(null, false); }
+
+      if (user.password != password) { return done(null, false); }
+
+      var token = uid(16);
+      user.token = token;
+      return done(null, user); 
+    });
+  	
+
   }
 ));
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=./src node server.js",
+    "start": "NODE_PATH=./src node server.js & gulp dev-server",
     "dev": "npm start & webpack-dev-server --progress --colors",
     "test": "istanbul cover --include-all-sources jasmine-node test",
     "build": "webpack --progress --colors --config webpack.prod.config.js"
@@ -19,10 +19,12 @@
     "bootstrap-sass": "^3.3.6",
     "cors": "^2.7.1",
     "express": "^4.13.4",
+    "gulp-serve": "^1.2.0",
     "istanbul": "^0.4.3",
     "jasmine-node": "^1.14.5",
     "jquery": "^2.2.3",
     "kerberos": "0.0.19",
+    "lodash": "^4.11.1",
     "mongoose": "^4.4.13",
     "mongoose-relationship": "^0.1.5",
     "passport": "^0.3.2",

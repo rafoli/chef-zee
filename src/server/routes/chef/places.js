@@ -4,21 +4,39 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res) {
-	ChefPlace.find(function(err, results) {
-		console.log(req.headers.authorization);
-		if (err) { console.log(err) };
+	ChefPlace
+		.find()
+		.populate('user')
+		.exec( function(err, places) {
+			console.log(req.headers.authorization);
+			if (err) { console.log(err) };
 
-		res.send( { places: results });
-	});
+			res.send( { places: places });
+		});
 });
 
 router.post('/', function(req, res) {
 	var place = new ChefPlace(req.body);
-	console.log(place);
 	place.save(function(err) {
 		if (err) { console.log(err); }
 
 		res.send('Place saved');
+	});
+});
+
+router.put('/:id', function(req, res) {
+	ChefPlace.findOne( { '_id': req.params.id }, function(err, place) {	
+
+		place.name = req.body.name;
+		place.description = req.body.description;
+		place.moreDescription = req.body.moreDescription;
+		place.logo = req.body.logo;
+
+		place.save(function(err) {
+			if (err) { console.log(err); }
+
+			res.send('Place saved');
+		});
 	});
 });
 

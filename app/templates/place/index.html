@@ -1,0 +1,217 @@
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">istto</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#places">Restaurantes</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contato</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="shopping-cart"><i class="fa fa-shopping-cart"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-background">
+                    <div class="intro-lead-in">Bem vindo ao Vita Gourmet!</div>
+                    <a href="#places" class="page-scroll btn btn-xl">O que você deseja?</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+    <section id="portfolio" class="bg-light-gray">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{place.name}}</h2>
+                <h3 class="section-subheading text-muted">{{place.name}}</h3>
+            </div>
+        </div>
+        <div class="row tlp-food-menu">
+            <div ng-repeat="menu in place.menus" class="tlp-col-md-6 tlp-col-lg-6 tlp-col-sm-12 paddingl0">
+                <div class="tlp-equal-height food-item" style="height: 250px;">
+                    <div class="food-menu-group" ng-if="(menu) && !isEditingMenu(menu)">
+                        <div class="image-area tlp-col-md-5 tlp-col-lg-5 tlp-col-sm-6 paddingl0 ">
+                            <img width="300" height="200" src="{{menu.image}}" class="attachment-medium wp-post-image">
+                        </div>
+                        <div class="tlp-col-md-7 tlp-col-lg-7 tlp-col-sm-6 padding0">
+                            <div class="title">
+                                <h3>{{ menu.name }}</h3>
+                                <span class="price">
+                                {{ menu.price }}
+                                <!--Buttons-->
+                                <div class="card-btn text-right">
+                                    <button ng-click="goTo(place._id)" class="btn btn-success btn-md waves-effect waves-light">Pedir</button>
+                                    <button ng-click="editMenu(menu)" ng-if="isAdmin() || isChef(place)" class="btn btn-success btn-md waves-effect waves-light">Editar</button>
+                                </div>
+                                <!--/.Buttons-->
+                                </span>
+                            </div>
+                            <p>{{ menu.description }}</p>
+                        </div>
+                    </div>
+                    <div class="food-menu-group" ng-if="isEditingMenu(menu)">
+                        <form>
+                            <div class="image-area tlp-col-md-5 tlp-col-lg-5 tlp-col-sm-6 paddingl0 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
+                                <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="menu.image"/>
+                            </div>
+                            <div class="tlp-col-md-7 tlp-col-lg-7 tlp-col-sm-6 padding0">
+                                <div class="title">
+                                    <input class="menu-form-name" type="text" placeholder="Nome" ng-model="menu.name" />
+                                    <span class="price">
+                                    <input class="menu-form-price" type="text" placeholder="Preço" ng-model="menu.price" />
+                                    <!--Buttons-->
+                                    <div class="card-btn text-right">
+                                        <button ng-click="updateMenu(menu)" class="btn btn-success btn-md waves-effect waves-light">Salvar</button>
+                                        <button ng-click="cancelMenu(menu)" class="btn btn-success btn-md waves-effect waves-light">Cancelar</button>
+                                    </div>
+                                    <!--/.Buttons-->
+                                    </span>
+                                </div>
+                                
+                                    <div class="menu-form-description" contentEditable="true" data-placeholder="Descrição" ng-model="params.menuDescription"></div>
+                            </div>
+                        </form>    
+                    </div>                    
+                </div>
+            </div>  
+            <div class="tlp-col-md-6 tlp-col-lg-6 tlp-col-sm-12 paddingl0" ng-if="isAdmin() || isChef(place)">
+                <div class="tlp-equal-height food-item" style="height: 250px;">
+                    <div class="food-menu-group">
+                        <form>
+                            <div class="image-area tlp-col-md-5 tlp-col-lg-5 tlp-col-sm-6 paddingl0 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
+                                <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="$parent.params.menuImage"/>
+                            </div>
+                            <div class="tlp-col-md-7 tlp-col-lg-7 tlp-col-sm-6 padding0">
+                                <div class="title">
+                                    <input class="menu-form-name" type="text" placeholder="Nome" ng-model="$parent.params.menuName" />
+                                    <span class="price">
+                                    <input class="menu-form-price" type="text" placeholder="Preço" ng-model="$parent.params.menuPrice" />
+                                    <!--Buttons-->
+                                    <div class="card-btn text-right">
+                                        <button ng-click="createMenu()" class="btn btn-success btn-md waves-effect waves-light">Salvar</button>
+                                    </div>
+                                    <!--/.Buttons-->
+                                    </span>
+                                </div>
+                                
+                                    <div class="menu-form-description" contentEditable="true" data-placeholder="Descrição" ng-model="$parent.params.menuDescription"></div>
+                            </div>
+                        </form>    
+                    </div>
+                </div>
+            </div>             
+         </div>   
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Contato</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Seu nome (opcional)" id="name" required data-validation-required-message="Please enter your name.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Seu email (opcional)" id="email" required data-validation-required-message="Please enter your email address.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Seu telefone/celular (opcional)" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Sua mensagem *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; istto 2016</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacidade</a>
+                        </li>
+                        <li><a href="#">Termos de Uso</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+<div class="tml-snackbar mdl-shadow--2dp ng-hide" ng-cloak tml-snack message="alert"></div>
+

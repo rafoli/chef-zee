@@ -1,24 +1,27 @@
 var mongoose = require('mongoose');
+var User = require('server/db/db').User;
 var ChefPlace = require('server/db/db').ChefPlace;
 var ChefMenu = require('server/db/db').ChefMenu;
 var express = require('express');
 var router = express.Router();
 
 router.get('/:id', function(req, res) {
-	ChefPlace.findOne( { '_id': req.params.id }, function(err, results) {
-		console.log(req.headers.authorization);
-		if (err) { console.log(err) };
-
-		var chef = results;
-
-		ChefMenu.find( { 'chef': req.params.id }, function(err, results2) {
+	ChefPlace
+		.findOne( { '_id': req.params.id })
+		.populate('user')
+		.exec( function(err, place) {
 			if (err) { console.log(err) };
 
-			chef.menus = results2;
+			ChefMenu.find( { 'place': req.params.id }, function(err, menus) {
+				if (err) { console.log(err) };
 
-			res.send( { place: chef });
+				place.menus = menus;
+
+				console.log(place);
+
+				res.send( { place: place });
+			});
 		});
-	});
 });
 
 router.post('/', function(req, res) {
@@ -27,6 +30,21 @@ router.post('/', function(req, res) {
 		if (err) { console.log(err); }
 
 		res.send('Menu saved');
+	});
+});
+
+router.put('/:id', function(req, res) {
+	ChefMenu.findOne( { '_id': req.params.id }, function(err, menu) {		
+
+		menu.name = req.body.name;
+		menu.price = req.body.price;
+		menu.image = req.body.image;
+
+		menu.save(function(err) {
+			if (err) { console.log(err); }
+
+			res.send('Menu saved');
+		});
 	});
 });
 
