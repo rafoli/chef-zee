@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=./src node server.js & gulp dev-server",
-    "dev": "npm start & webpack-dev-server --progress --colors",
+    "start": "NODE_PATH=./src node server.js",
+    "dev": "npm start & gulp dev-server",
     "test": "istanbul cover --include-all-sources jasmine-node test",
     "build": "webpack --progress --colors --config webpack.prod.config.js"
   },
