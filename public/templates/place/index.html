@@ -38,7 +38,7 @@
     </nav>
 
     <!-- Header -->
-    <header>
+    <header class="main-header">
         <div class="container">
             <div class="intro-text">
                 <div class="intro-background">
@@ -62,15 +62,20 @@
             </div>
         </div>
         <div class="row tlp-food-menu">
-            <div ng-repeat="menu in place.menus" class="tlp-col-md-6 tlp-col-lg-6 tlp-col-sm-12 paddingl0">
-                <div class="tlp-equal-height food-item" style="height: 250px;">
-                    <div class="food-menu-group" ng-if="(menu) && !isEditingMenu(menu)">
-                        <div class="image-area tlp-col-md-5 tlp-col-lg-5 tlp-col-sm-6 paddingl0 ">
-                            <img width="300" height="200" src="{{menu.image}}" class="attachment-medium wp-post-image">
-                        </div>
-                        <div class="tlp-col-md-7 tlp-col-lg-7 tlp-col-sm-6 padding0">
-                            <div class="title">
-                                <h3>{{ menu.name }}</h3>
+            <div class="col-md-9 col-lg-9 col-sm-9">
+                <div ng-repeat="menu in place.menus" class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="tlp-equal-height food-item">
+                        <div class="row food-menu-group" ng-if="(menu) && !isEditingMenu(menu)">
+                            <div class="image-area col-md-3 col-lg-3 col-sm-3">
+                                <img width="300" height="200" src="{{menu.image}}" class="attachment-medium wp-post-image">
+                            </div>
+                            <div class="col-md-7 col-lg-7 col-sm-7">
+                                <div class="title">
+                                    <h3>{{ menu.name }}</h3>
+                                </div>
+                                <p>{{ menu.description }}</p>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-2">
                                 <span class="price">
                                 {{ menu.price }}
                                 <!--Buttons-->
@@ -81,44 +86,47 @@
                                 <!--/.Buttons-->
                                 </span>
                             </div>
-                            <p>{{ menu.description }}</p>
                         </div>
-                    </div>
-                    <div class="food-menu-group" ng-if="isEditingMenu(menu)">
-                        <form>
-                            <div class="image-area tlp-col-md-5 tlp-col-lg-5 tlp-col-sm-6 paddingl0 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
-                                <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="menu.image"/>
-                            </div>
-                            <div class="tlp-col-md-7 tlp-col-lg-7 tlp-col-sm-6 padding0">
-                                <div class="title">
-                                    <input class="menu-form-name" type="text" placeholder="Nome" ng-model="menu.name" />
-                                    <span class="price">
-                                    <input class="menu-form-price" type="text" placeholder="Preço" ng-model="menu.price" />
-                                    <!--Buttons-->
-                                    <div class="card-btn text-right">
-                                        <button ng-click="updateMenu(menu)" class="btn btn-success btn-md waves-effect waves-light">Salvar</button>
-                                        <button ng-click="cancelMenu(menu)" class="btn btn-success btn-md waves-effect waves-light">Cancelar</button>
+                        <div class="row food-menu-group" ng-if="isEditingMenu(menu)">
+                            <form>
+                                <div class="image-area col-md-3 col-lg-3 col-sm-3 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
+                                    <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="menu.image"/>
+                                </div>
+                                <div class="col-md-7 col-lg-7 col-sm-7">
+                                    <div class="title">
+                                        <input class="menu-form-name" type="text" placeholder="Nome" ng-model="menu.name" />
                                     </div>
-                                    <!--/.Buttons-->
+                                    <div class="menu-form-description" contentEditable="true" data-placeholder="Descrição" ng-model="params.menuDescription"></div>
+                                </div>
+                                <div class="col-md-2 col-lg-2 col-sm-2">
+                                    <span class="price">
+                                        <input class="menu-form-price" type="text" placeholder="Preço" ng-model="menu.price" />
+                                        <!--Buttons-->
+                                        <div class="card-btn text-right">
+                                            <button ng-click="updateMenu(menu)" class="btn btn-success btn-md waves-effect waves-light">Salvar</button>
+                                            <button ng-click="cancelMenu(menu)" class="btn btn-success btn-md waves-effect waves-light">Cancelar</button>
+                                        </div>
+                                        <!--/.Buttons-->
                                     </span>
                                 </div>
-                                
-                                    <div class="menu-form-description" contentEditable="true" data-placeholder="Descrição" ng-model="params.menuDescription"></div>
-                            </div>
-                        </form>    
-                    </div>                    
-                </div>
-            </div>  
-            <div class="tlp-col-md-6 tlp-col-lg-6 tlp-col-sm-12 paddingl0" ng-if="isAdmin() || isChef(place)">
-                <div class="tlp-equal-height food-item" style="height: 250px;">
-                    <div class="food-menu-group">
-                        <form>
-                            <div class="image-area tlp-col-md-5 tlp-col-lg-5 tlp-col-sm-6 paddingl0 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
-                                <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="$parent.params.menuImage"/>
-                            </div>
-                            <div class="tlp-col-md-7 tlp-col-lg-7 tlp-col-sm-6 padding0">
-                                <div class="title">
-                                    <input class="menu-form-name" type="text" placeholder="Nome" ng-model="$parent.params.menuName" />
+                            </form>    
+                        </div>                    
+                    </div>
+                </div>  
+                <div  class="col-md-12 col-lg-12 col-sm-12" ng-if="isAdmin() || isChef(place)">
+                    <div class="tlp-equal-height food-item">
+                        <div class="row food-menu-group">
+                            <form>
+                                <div class="image-area col-md-3 col-lg-3 col-sm-3 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
+                                    <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="$parent.params.menuImage"/>
+                                </div>
+                                <div class="col-md-7 col-lg-7 col-sm-7">
+                                    <div class="title">
+                                        <input class="menu-form-name" type="text" placeholder="Nome" ng-model="$parent.params.menuName" />
+                                    </div>    
+                                    <div class="menu-form-description" contenteditable data-placeholder="Descrição" ng-model="$parent.params.menuDescription"></div>
+                                </div>
+                                <div class="col-md-2 col-lg-2 col-sm-2">
                                     <span class="price">
                                     <input class="menu-form-price" type="text" placeholder="Preço" ng-model="$parent.params.menuPrice" />
                                     <!--Buttons-->
@@ -128,13 +136,35 @@
                                     <!--/.Buttons-->
                                     </span>
                                 </div>
-                                
-                                    <div class="menu-form-description" contentEditable="true" data-placeholder="Descrição" ng-model="$parent.params.menuDescription"></div>
-                            </div>
-                        </form>    
+                            </form>    
+                        </div>
                     </div>
-                </div>
-            </div>             
+                </div>                                                                                                 
+            </div>
+            <div id="sticky-anchor" ></div>
+            <div id="sticky" class="module-cart col-md-3 col-lg-3 col-sm-3">
+                <div>
+                    <header>
+                        <h2>Seu carrinho</h2>
+                    </header>
+                    <div class="cart-items">
+                        <div class="empty-cart" ng-hide="items.length">
+                            <div>No items in your bag</div>
+                        </div>
+                    </div>
+                    <footer>
+                        <div class="cart-info">  
+                             <div class="total">
+                                <strong class="label">Total</strong>
+                                <strong class="value">$0.00</strong>
+                            </div>  
+                        </div> 
+                        <div  >
+                            <a class="btn btn-success">Fechar pedido</a>
+                        </div>                      
+                    </footer>            
+                </div>    
+            </div>                         
          </div>   
       </div>
     </section>
