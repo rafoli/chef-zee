@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">istto</a>
+                <a class="navbar-brand page-scroll" href="#page-top">istto <i class="fa fa-shopping-cart"></i> <i class="badge">2</i></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,20 +62,20 @@
             </div>
         </div>
         <div class="row tlp-food-menu">
-            <div class="col-md-9 col-lg-9 col-sm-9">
+            <div class="col-sm-12 col-md-9">
                 <div ng-repeat="menu in place.menus" class="col-md-12 col-lg-12 col-sm-12">
                     <div class="tlp-equal-height food-item">
                         <div class="row food-menu-group" ng-if="(menu) && !isEditingMenu(menu)">
-                            <div class="image-area col-md-3 col-lg-3 col-sm-3">
+                            <div class="image-area col-md-3 hidden-xs hidden-sm">
                                 <img width="300" height="200" src="{{menu.image}}" class="attachment-medium wp-post-image">
                             </div>
-                            <div class="col-md-7 col-lg-7 col-sm-7">
+                            <div class="col-xs-9 col-md-7">
                                 <div class="title">
                                     <h3>{{ menu.name }}</h3>
                                 </div>
                                 <p>{{ menu.description }}</p>
                             </div>
-                            <div class="col-md-2 col-lg-2 col-sm-2">
+                            <div class="col-xs-3 col-md-2">
                                 <span class="price">
                                 {{ menu.price }}
                                 <!--Buttons-->
@@ -141,8 +141,8 @@
                     </div>
                 </div>                                                                                                 
             </div>
-            <div id="sticky-anchor" ></div>
-            <div id="sticky" class="module-cart col-md-3 col-lg-3 col-sm-3">
+
+            <div class="module-cart col-md-3 col-xs-12">
                 <div>
                     <header>
                         <h2>Seu carrinho</h2>
@@ -159,12 +159,13 @@
                                 <strong class="value">$0.00</strong>
                             </div>  
                         </div> 
-                        <div  >
-                            <a class="btn btn-success">Fechar pedido</a>
+                        <div>
+                            <br />
+                            <a class="btn btn-success btn-lg btn-block">Fechar pedido</a>
                         </div>                      
                     </footer>            
                 </div>    
-            </div>                         
+            </div>
          </div>   
       </div>
     </section>

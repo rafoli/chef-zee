@@ -650,3 +650,6 @@ img::-moz-selection {
     z-index: 10000;
     border-radius: 0 0 0.5em 0.5em;
 }
+
+@media min-width 768px {
+}
