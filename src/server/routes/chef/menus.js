@@ -17,8 +17,6 @@ router.get('/:id', function(req, res) {
 
 				place.menus = menus;
 
-				console.log(place);
-
 				res.send( { place: place });
 			});
 		});

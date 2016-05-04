@@ -90,7 +90,16 @@
                         <div class="row food-menu-group" ng-if="isEditingMenu(menu)">
                             <form>
                                 <div class="image-area col-md-3 col-lg-3 col-sm-3 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
-                                    <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="menu.image"/>
+                                    <input
+                                          uploadcare-widget
+                                          ng-model="menu.image"
+                                          data-images-only="true"
+                                          data-preview-step="true"
+                                          data-clearable="true"
+                                          data-multiple="false"
+                                          on-upload-complete="onUCUploadComplete(info)"
+                                          on-widget-ready="onUCWidgetReady(widget)"
+                                         />
                                 </div>
                                 <div class="col-md-7 col-lg-7 col-sm-7">
                                     <div class="title">
@@ -118,7 +127,16 @@
                         <div class="row food-menu-group">
                             <form>
                                 <div class="image-area col-md-3 col-lg-3 col-sm-3 form-image-area" style="background-color: #ccc; text-align: center; min-height: 100px">
-                                    <input class="menu-form-image" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="$parent.params.menuImage"/>
+                                    <input
+                                          uploadcare-widget
+                                          ng-model="$parent.params.menuImage"
+                                          data-images-only="true"
+                                          data-preview-step="true"
+                                          data-clearable="true"
+                                          data-multiple="false"
+                                          on-upload-complete="onUCUploadComplete(info)"
+                                          on-widget-ready="onUCWidgetReady(widget)"
+                                         />
                                 </div>
                                 <div class="col-md-7 col-lg-7 col-sm-7">
                                     <div class="title">

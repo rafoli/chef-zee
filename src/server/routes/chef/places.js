@@ -8,7 +8,6 @@ router.get('/', function(req, res) {
 		.find()
 		.populate('user')
 		.exec( function(err, places) {
-			console.log(req.headers.authorization);
 			if (err) { console.log(err) };
 
 			res.send( { places: places });

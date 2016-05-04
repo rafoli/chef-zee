@@ -77,7 +77,16 @@
                                 <div class="front" ng-if="isEditingPlace(place)">
                                   <form>
                                     <div class="cover" style="background-color: #ccc; text-align: center;">
-                                        <input class="place-form-logo" type="text" style="width: 90%;" ng-model="place.logo"/>
+                                        <input
+                                          uploadcare-widget
+                                          ng-model="place.logo"
+                                          data-images-only="true"
+                                          data-preview-step="true"
+                                          data-clearable="true"
+                                          data-multiple="false"
+                                          on-upload-complete="onUCUploadComplete(info)"
+                                          on-widget-ready="onUCWidgetReady(widget)"
+                                         />
                                     </div>
                                     <div class="content">
                                         <div class="main" style="text-align: center">
@@ -106,7 +115,16 @@
                                 <div class="front">
                                   <form ng-submit="createPlace()">
                                     <div class="cover" style="background-color: #ccc; text-align: center;">
-                                        <input class="place-form-logo" type="text" placeholder="Logo URL" style="width: 90%;"  ng-model="$parent.params.placeLogo"/>
+                                    <input
+                                          uploadcare-widget
+                                          ng-model="$parent.params.placeLogo"
+                                          data-images-only="true"
+                                          data-preview-step="true"
+                                          data-clearable="true"
+                                          data-multiple="false"
+                                          on-upload-complete="onUCUploadComplete(info)"
+                                          on-widget-ready="onUCWidgetReady(widget)"
+                                         />
                                     </div>
                                     <div class="content">
                                         <div class="main" style="text-align: center">

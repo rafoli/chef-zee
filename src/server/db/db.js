@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/istto');
 
+
 // User
 var UserSchema = new Schema({
 	name: String,
