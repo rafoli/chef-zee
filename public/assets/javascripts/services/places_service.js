@@ -53,6 +53,14 @@ isttoApp.Services
           data: menu,
           headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
         });
-      }
+      },
+      deleteMenu: function (menu) {
+        return $http({
+          method: "DELETE",
+          url: "/chef/menus/" + menu._id,
+          data: menu,
+          headers: { "Authorization": "Basic " + btoa(Storage.get("authToken") + ":") }
+        });
+      }      
     };
   }]);

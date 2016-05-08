@@ -3,7 +3,8 @@
 isttoApp.Controllers
   .controller("PlacesController", ["$scope",
     "PlacesService",
-    "$location", function ($scope, PlacesService, $location) {
+    "$location",
+    "$window", function ($scope, PlacesService, $location, $window) {
 
     $scope.loading = true;
     $scope.alert = "Carregando opções...";
@@ -25,6 +26,7 @@ isttoApp.Controllers
       PlacesService.places().then(function (response) {
         $scope.places = response.data.places;
         $scope.loading = false;
+        $window.scrollTo(0, 0);
       }, function () {
         $location.path("/logout");
       });
@@ -45,6 +47,9 @@ isttoApp.Controllers
                 );
 
       place.then(function (response) {
+        $scope.params.placeName = '';
+        $scope.params.placeDescription = ''; 
+        $scope.params.placeMoreDescription = '';       
         places();
       }, function () {
         $scope.showError = true;

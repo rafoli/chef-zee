@@ -17,10 +17,10 @@ isttoApp.Controllers
       var auth = AuthService.getToken($scope.params);
 
       auth.then(function (response) {
-        $rootScope.role = response.data.role;
-        $rootScope.userId = response.data._id;
         Storage.set("authToken", response.data.token);
         Storage.set("authTokenWhen", new Date().getTime());
+        Storage.set("authUserId", response.data._id);
+        Storage.set("authRole", response.data.role);
 
         $location.path("/places");
       }, function () {

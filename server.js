@@ -35,8 +35,6 @@ passport.use(new BasicStrategy(
   function(userid, password, done) {
     console.log(userid + ' : ' + password)
     User.findOne( { 'email': userid }, function(err, user) {
-      console.log(err)
-      console.log(user)
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
       if (user.password != password) { return done(null, false); }

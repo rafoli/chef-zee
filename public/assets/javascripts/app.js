@@ -9,7 +9,8 @@ angular.module(istto, ["ngRoute",
   "istto.filters",
   "LocalStorageModule",
   "ngLodash",
-  "angular.filter"]);
+  "angular.filter",
+  "ui.utils.masks"]);
 
 angular.module(istto).config(function ($routeProvider, $locationProvider, localStorageServiceProvider) {
   var now = "?timestamp=" + Date.now();

@@ -44,6 +44,9 @@ isttoApp.Controllers
                 );
 
       menu.then(function (response) {
+        $scope.params.menuName = ''; 
+        $scope.params.menuDescription = ''; 
+        $scope.params.menuPrice = ''; 
         place();
       }, function () {
         $scope.showError = true;
@@ -59,6 +62,17 @@ isttoApp.Controllers
       }, function () {
         $scope.showError = true;
       });
-    };   
+    }; 
+
+    $scope.deleteMenu = function (menu) {
+
+      var menu = PlacesService.deleteMenu(menu);
+
+      menu.then(function (response) {
+        place();
+      }, function () {
+        $scope.showError = true;
+      });
+    };            
 
   }]);

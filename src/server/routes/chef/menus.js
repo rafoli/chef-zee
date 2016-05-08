@@ -46,4 +46,15 @@ router.put('/:id', function(req, res) {
 	});
 });
 
+router.delete('/:id', function(req, res) {
+	ChefMenu.findOne( { '_id': req.params.id }, function(err, menu) {		
+
+		menu.remove(function(err) {
+			if (err) { console.log(err); }
+
+			res.send('Menu deleted');
+		});
+	});
+});
+
 module.exports = router;
