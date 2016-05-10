@@ -10,7 +10,11 @@ angular.module(istto, ["ngRoute",
   "LocalStorageModule",
   "ngLodash",
   "angular.filter",
-  "ui.utils.masks"]);
+  "ui.utils.masks",
+  "btford.socket-io"]).
+factory('mySocket', function (socketFactory) {
+  return socketFactory();
+});
 
 angular.module(istto).config(function ($routeProvider, $locationProvider, localStorageServiceProvider) {
   var now = "?timestamp=" + Date.now();
@@ -24,6 +28,11 @@ angular.module(istto).config(function ($routeProvider, $locationProvider, localS
     .when("/logout", {
       templateUrl: "templates/login/index.html" + now,
       controller: "LogoutController"
+    })
+
+    .when("/admin", {
+      templateUrl: "templates/admin/index.html" + now,
+      controller: "CartController"
     })
 
     .when("/places", {
@@ -51,6 +60,7 @@ isttoApp.Controllers = angular.module("istto.controllers", []);
 isttoApp.Directives = angular.module("istto.directives", []);
 isttoApp.Services = angular.module("istto.services", []);
 isttoApp.Filters = angular.module("istto.filters", []);
+
 
 
 angular.module(istto).directive('contenteditable', function() {

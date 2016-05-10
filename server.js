@@ -1,13 +1,15 @@
-var express = require('express');
-var app = express();
-var cors = require('cors');
-var path = require('path');
-var bodyParser = require('body-parser');
-var routes = require('server/routes');
-var uid = require('rand-token').uid;
-var User = require('server/db/db').User;
-
-var passport = require('passport');
+require('newrelic');
+var express       = require('express');
+var app           = express();
+var cors          = require('cors');
+var path          = require('path');
+var bodyParser    = require('body-parser');
+var routes        = require('server/routes');
+var uid           = require('rand-token').uid;
+var User          = require('server/db/db').User;
+var server        = require('http').Server(app);
+var io            = require('socket.io')(server);
+var passport      = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
 
 

@@ -37,6 +37,25 @@ var ChefMenuSchema = new Schema({
 });
 var ChefMenu = mongoose.model('ChefMenu', ChefMenuSchema);
 
+// Order
+var ChefOrderSchema = new Schema({
+	status: String,
+	items: [{type: Schema.ObjectId, ref: 'ChefOrderItem'}],
+	place: { type:Schema.ObjectId, ref:"ChefPlace" },
+	user: { type:Schema.ObjectId, ref:"ChefPlace" }
+});
+var ChefOrder = mongoose.model('ChefOrder', ChefOrderSchema);
+
+// OrderItem
+var ChefOrderItemSchema = new Schema({
+	name: String,
+	price: String,
+	order: { type:Schema.ObjectId, ref:"ChefOrder", childPath:"items" }
+});
+var ChefOrderItem = mongoose.model('ChefOrderITem', ChefOrderItemSchema);
+
 module.exports.ChefMenu = ChefMenu;
 module.exports.ChefPlace = ChefPlace;
+module.exports.ChefOrder = ChefOrder;
+module.exports.ChefOrderItem = ChefOrderItem;
 module.exports.User = User;
