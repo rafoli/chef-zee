@@ -364,7 +364,6 @@ ul.social-buttons li a {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     overflow: hidden;
     padding: 5px;
-    height: 107px;
 }
 .place-form-name,
 .place-form-description,
@@ -586,15 +585,24 @@ img::-moz-selection {
     .tlp-food-menu span.price {
         font-size: 16px;
     }
+    .tlp-food-menu .food-item {
+        height: 300px;
+    }
 }
 @media min-width 992px {
     .container {
         width: 970px;
     }
+    .tlp-food-menu .food-item {
+        height: 107px;
+    }
 }
 @media min-width 1200px {
     .container {
         width: 1170px;
+    }
+    .tlp-food-menu .food-item {
+        height: 107px;
     }
 }
 

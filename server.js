@@ -59,6 +59,6 @@ app.get('/user/me',
 	}
 );
 
-app.listen(PORT, function() {
+server.listen(PORT, function() {
     console.log('Server running on ' + PORT);
 });
