@@ -10,11 +10,7 @@ angular.module(istto, ["ngRoute",
   "LocalStorageModule",
   "ngLodash",
   "angular.filter",
-  "ui.utils.masks",
-  "btford.socket-io"]).
-factory('mySocket', function (socketFactory) {
-  return socketFactory();
-});
+  "ui.utils.masks"]);
 
 angular.module(istto).config(function ($routeProvider, $locationProvider, localStorageServiceProvider) {
   var now = "?timestamp=" + Date.now();

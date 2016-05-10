@@ -4,8 +4,7 @@ isttoApp.Controllers
   .controller("PlacesController", ["$scope",
     "PlacesService",
     "$location",
-    "$window",
-    'mySocket', function ($scope, PlacesService, $location, $window) {
+    "$window", function ($scope, PlacesService, $location, $window) {
 
     $scope.loading = true;
     $scope.alert = "Carregando opções...";
